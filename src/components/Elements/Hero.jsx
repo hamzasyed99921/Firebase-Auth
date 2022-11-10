@@ -10,13 +10,13 @@ const Hero = () => {
     if(authToken){
       navigate('/home')
     }if(!authToken){
-      navigate('/login')
+      navigate('/')
     }
   }, []);
 
   const logout = ( ) => {
     sessionStorage.removeItem('auth');
-    navigate('/login')
+    navigate('/')
   }
   return (
     <>

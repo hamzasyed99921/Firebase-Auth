@@ -64,7 +64,7 @@ function App() {
       <Routes>
       <Route path="/home" element={<Hero />} />
         <Route
-          path="/login"
+          path="/"
           element={
             <Form
               setEmail={setEmail}
