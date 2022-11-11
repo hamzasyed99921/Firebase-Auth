@@ -5,7 +5,7 @@ const Button = ({title,handleAction}) => {
   return (
     <div>
 
-    <MButton variant="contained" onClick={handleAction}>{title}</MButton>
+    <MButton variant="contained" className="buton" onClick={handleAction}>{title}</MButton>
     </div>
   )
 }

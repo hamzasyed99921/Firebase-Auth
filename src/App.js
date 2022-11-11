@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import { Routes, Route } from "react-router-dom";
 import Form from "./components/Elements/Form";
+import ForgotPassword from "./components/Elements/ForgotPassword";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { app } from "./firebase";
@@ -15,6 +16,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import Hero from "./components/Elements/Hero";
 
@@ -29,6 +31,17 @@ function App() {
       navigate("/home");
     }
   }, []);
+
+  const forgetPassword =() => {
+    // alert('hello')
+    
+    const auth = getAuth();
+    sendPasswordResetEmail(auth,email).then(() => {
+      console.log('Password reset link sent');
+    }).catch(error => {
+      console.log(error);
+    })
+  }
 
   const handleAction = (id) => {
     const authentication = getAuth();
@@ -77,7 +90,8 @@ function App() {
               setEmail={setEmail}
               setPassword={setPassword}
               handleAction={() => handleAction(1)}
-              title="login"
+              
+              title="Login"
             />
           }
         />
@@ -88,8 +102,14 @@ function App() {
               setEmail={setEmail}
               setPassword={setPassword}
               handleAction={() => handleAction(2)}
-              title="register"
+              title="SignUp"
             />
+          }
+        />
+        <Route
+          path="/forget"
+          element={
+            <ForgotPassword title="Forgot Password" setEmail={setEmail} forgetPassword={() => forgetPassword()}/>
           }
         />
       </Routes>
