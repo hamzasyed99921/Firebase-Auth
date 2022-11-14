@@ -5,7 +5,13 @@ import TextField from "@mui/material/TextField";
 import Button from "./Button";
 import { Link } from "react-router-dom";
 
-const Form = ({ title, setEmail, setPassword, handleAction,forgetPassword }) => {
+const Form = ({
+  title,
+  setEmail,
+  setPassword,
+  handleAction,
+  forgetPassword,
+}) => {
   return (
     <>
       <div className="container pt-5">
@@ -28,7 +34,6 @@ const Form = ({ title, setEmail, setPassword, handleAction,forgetPassword }) => 
               variant="outlined"
               onChange={(e) => setEmail(e.target.value)}
             />
-
           </Box>
           <Box
             component="form"
@@ -45,12 +50,22 @@ const Form = ({ title, setEmail, setPassword, handleAction,forgetPassword }) => 
               variant="outlined"
               onChange={(e) => setPassword(e.target.value)}
             />
-            </Box>
-            <Button title={title}  handleAction={handleAction} />
-            <div className="bottem_txt">
-              <p>Don't Have an account <Link to="/register">SignUp</Link></p>
-              <p className="text-center"><Link to='/forget'>Forget Password</Link></p>
-            </div>
+          </Box>
+          <Button title={title} handleAction={handleAction} />
+          <div className="bottem_txt">
+            {title === "Login" ? (
+              <p>
+                Don't Have an account <Link to="/register">SignUp</Link>
+              </p>
+            ) : (
+              <p>
+                Already Have an account <Link to="/">Login</Link>
+              </p>
+            )}
+            <p className="text-center">
+              <Link to="/forget">Forget Password</Link>
+            </p>
+          </div>
         </div>
       </div>
     </>

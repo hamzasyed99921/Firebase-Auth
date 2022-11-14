@@ -1,6 +1,8 @@
 import { Button } from "@mui/material";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css"; 
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -17,11 +19,14 @@ const Hero = () => {
   const logout = ( ) => {
     sessionStorage.removeItem('auth');
     navigate('/')
+    toast("LogOut Successfully!")
   }
   return (
     <>
-    <h2>Home</h2>
-    <Button onClick={logout}>Logout</Button>
+      <div className="container d-flex flex-column justify-content-center align-items-center" style={{height: '100vh'}}>
+      <h2>Home</h2>
+    <Button variant="contained" onClick={logout}>Logout</Button>
+      </div>
     </>
   )
 }
