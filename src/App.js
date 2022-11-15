@@ -27,8 +27,6 @@ import Hero from "./components/Elements/Hero";
 function App() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setquery] = useState(searchParams.get("oobCode"));
-  // const [mode, setmode] = useState(searchParams.get("mode"));
-  // console.log(mode);
 
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -56,10 +54,9 @@ function App() {
       });
       verifyPasswordResetCode(auth, query).then((email) => {
         const accountEmail = email;
-        console.log(email);
       })
       
-    const docRef = doc(db, "auth", 'zkZwdQySDDfW3CkKzU9b7S7665r1');
+    const docRef = doc(db, "auth", email);
     const data = {
       password: newPassword,
     };
