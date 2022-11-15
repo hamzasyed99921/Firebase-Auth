@@ -32,7 +32,7 @@ const Form = ({ title, setEmail, forgetPassword }) => {
         
             <TButton variant="contained"  onClick={forgetPassword} >Send Link</TButton>
             <div className="bottem_txt">
-              <p>Back to <Link to="/">Login</Link></p>
+              <p>Back to <Link to="/reset">Login</Link></p>
             </div>
         </div>
       </div>
