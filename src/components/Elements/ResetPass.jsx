@@ -3,14 +3,12 @@ import { Button as TButton } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { Link, useFetcher, useSearchParams } from "react-router-dom";
-
-
-
 const ResetPass = ({title, setNewPassword, ResetPassword}) => {
 
    const [searchParams, setSearchParams] = useSearchParams();
    const [query, setquery] = useState((searchParams.get('oobCode')));
-
+//    console.log(query);
+//    const res = useFetch()
   return (
     <>
         <div className="container pt-5">
@@ -36,7 +34,7 @@ const ResetPass = ({title, setNewPassword, ResetPassword}) => {
 
           </Box>
         
-            <TButton variant="contained"  onClick={ResetPassword} >{title}</TButton>
+            <TButton variant="contained"   onClick={ResetPassword} >{title}</TButton>
             <div className="bottem_txt">
               <p>Back to <Link to="/">Login</Link></p>
             </div>

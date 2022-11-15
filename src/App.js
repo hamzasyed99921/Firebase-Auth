@@ -10,10 +10,9 @@ import { useNavigate } from "react-router-dom";
 import { app } from "./firebase";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, doc, setDoc,query,where } from "firebase/firestore";
 import { db } from "./firebase";
 import { Link, useFetcher, useSearchParams } from "react-router-dom";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -55,11 +54,10 @@ function App() {
         console.log(error);
       });
       verifyPasswordResetCode(auth, query).then((email) => {
-        const accountEmail = email;
-        console.log(email);
+        // console.log(email);
       })
       
-    const docRef = doc(db, "auth", email);
+    const docRef = doc(db, "auth", 'By9vbh9pBKcfVtCX7R0WmOvlzk23');
     const data = {
       password: newPassword,
     };
