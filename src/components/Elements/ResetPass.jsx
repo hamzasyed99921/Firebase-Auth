@@ -10,7 +10,7 @@ const ResetPass = ({title, setNewPassword, ResetPassword}) => {
 
    const [searchParams, setSearchParams] = useSearchParams();
    const [query, setquery] = useState((searchParams.get('oobCode')));
-    
+
   return (
     <>
         <div className="container pt-5">
@@ -36,7 +36,7 @@ const ResetPass = ({title, setNewPassword, ResetPassword}) => {
 
           </Box>
         
-            <TButton variant="contained"  onClick={ResetPassword()} >{title}</TButton>
+            <TButton variant="contained"  onClick={ResetPassword} >{title}</TButton>
             <div className="bottem_txt">
               <p>Back to <Link to="/">Login</Link></p>
             </div>
